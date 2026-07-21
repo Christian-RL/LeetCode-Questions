@@ -1,0 +1,27 @@
+public class Solution {
+    public string LongestCommonPrefix(string[] strs) {
+        if (strs != null && !strs.Any()) return "";
+        int shortest = lengthOfShortest(strs);
+        string LCF = "";
+        for(int pointer = 0; pointer < shortest; pointer++){
+            if(equalChar(strs, pointer)) LCF += strs[0].ToCharArray()[pointer];
+        }
+        return LCF;
+    }
+
+    private int lengthOfShortest(string[] strs){
+        int shortest = 200;
+        foreach(string str in strs){
+            if(str.Length < shortest) shortest = str.Length;
+        }
+        return shortest;
+    }
+
+    private bool equalChar(string[] strs, int p){
+        char toComp = strs[0].ToCharArray()[p];
+        foreach(string str in strs){
+            if(str.ToCharArray()[p] != toComp) return false;
+        }
+        return true;
+    }
+}
