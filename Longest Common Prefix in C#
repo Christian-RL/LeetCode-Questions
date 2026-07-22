@@ -5,6 +5,7 @@ public class Solution {
         string LCF = "";
         for(int pointer = 0; pointer < shortest; pointer++){
             if(equalChar(strs, pointer)) LCF += strs[0].ToCharArray()[pointer];
+            else return LCF;
         }
         return LCF;
     }
