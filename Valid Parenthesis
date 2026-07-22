@@ -1,0 +1,20 @@
+public class Solution {
+    public bool IsValid(string s) {
+        char[] chars = s.ToCharArray();
+        Stack<char> stack = new Stack<char>();
+        foreach(char c in chars){
+            if(c == '(' || c == '{' || c == '['){
+                stack.Push(c);
+            }else{
+                char check = stack.Pop();
+                if(!validClose(check, c)) return false;
+            }
+        }
+        return stack.Count() == 0;
+    }
+    private bool validClose(char fromStack, char next){
+        return (fromStack == '(' && next == ')') ||
+                (fromStack == '{' && next == '}') ||
+                (fromStack == '[' && next == ']');
+    }
+}
