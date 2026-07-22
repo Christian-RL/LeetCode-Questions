@@ -1,0 +1,16 @@
+public class Solution {
+    public int RemoveDuplicates(int[] nums) {
+        List<int> res = new List<int>();
+        res.Add(nums[0]);
+        int prev = nums[0];
+        for(int i = 1; i < nums.Length; i++){
+            if(nums[i] == nums[i-1] || nums[i] <= prev) continue;
+            prev = nums[i];
+            res.Add(nums[i]);
+        }
+        for(int j = 0; j < res.Count(); j++){
+            nums[j] = res[j];
+        }
+        return res.Count();
+    }
+}
